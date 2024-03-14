@@ -1,0 +1,58 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: rgb(41,2,65);
+background: linear-gradient(90deg, rgba(41,2,65,1) 0%, rgba(89,26,80,1) 0%, rgba(0,41,97,1) 100%);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background: rgb(41,2,65);
+background: linear-gradient(90deg, rgba(41,2,65,1) 0%, rgba(55,0,47,1) 0%, rgba(0,29,69,1) 100%);
+border: 1px solid white;
+border-top: none;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.game-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.game-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.game-container a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #3a0062;
+    padding: 10px 20px;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid white;
+    width: 100%;
+}
