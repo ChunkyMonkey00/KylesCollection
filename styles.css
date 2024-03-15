@@ -5,6 +5,11 @@ background: linear-gradient(90deg, rgba(41,2,65,1) 0%, rgba(89,26,80,1) 0%, rgba
     color: #fff;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+}
+
+iframe {
+    overflow: hidden;
 }
 
 nav {
