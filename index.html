@@ -265,6 +265,34 @@ if(feat < 0) { feat=fts.length-1; } changeFt(fts[feat]); }
         // Add event listener for mouse movement
         document.addEventListener('mousemove', scaleCircles);
 			</script>
+	<script>
+		/* blocker */
+		var list = [
+];
+function rndFour() {
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var strr = "";
+  for (var i = 0; i < 4; i++) {
+    let rnd = Math.floor(Math.random() * chars.length);
+    strr += chars[rnd];
+  }
+  return strr;
+}
+function setUniqueDeviceCookie() { let e = getCookie("__b__"); e || setCookie("__b__", e = rndFour(), 365); } function getCookie(e) { let t = document.cookie.split(";"); for (let i = 0; i < t.length; i++) { let o = t[i].split("="); if (e == o[0].trim()) return decodeURIComponent(o[1]) } return null } function setCookie(e, t, i) { let o = ""; if (i) { let n = new Date; n.setTime(n.getTime() + 864e5 * i), o = "; expires=" + n.toUTCString() } document.cookie = e + "=" + encodeURIComponent(t) + o + "; path=/" } setUniqueDeviceCookie();
+if(list.includes(getCookie("__b__"))) {console.log("stop"); window.close();}
+var watermark = document.createElement("span");
+watermark.style.fontSize = "65px";
+watermark.style.color = "rgba(231, 150, 150, 0.3)";
+watermark.style.fontWeight = "bold";
+watermark.style.position = "absolute";
+watermark.style.zIndex = 999999;
+watermark.style.top = "0";
+watermark.style.left = "0";
+watermark.innerHTML = getCookie("__b__");
+watermark.id="_wh"
+document.body.appendChild(watermark);
+setInterval(() => {if(!document.getElementById("_wh")) document.body.appendChild(watermark);}, 2000);
+	</script>
 </body>
 
 </html>
