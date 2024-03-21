@@ -1329,7 +1329,7 @@
 		<footer>
 			<input type="text" id="search" placeholder="Search for a game...">
 	</footer>
-
+<div id="circleHolder" style="position:absolute;top:0;left:0;width:100%;height:100%;margin:0;padding:0;"></div>
 			<script>
 				function createIframe(url) {
             // Clear existing content
@@ -1421,7 +1421,7 @@ if(feat < 0) { feat=fts.length-1; } changeFt(fts[feat]); }
                     circle.className = 'circle';
                     circle.style.left = `${i * circleWidth + margin}px`;
                     circle.style.top = `${j * circleHeight + margin}px`;
-                    document.body.appendChild(circle);
+                    gel("circleHolder").appendChild(circle);
 		    circle.style.position = "fixed";
                 }
             }
