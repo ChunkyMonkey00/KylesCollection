@@ -166,6 +166,7 @@
             // Append the iframe to the body
             document.body.appendChild(iframe);
 			      document.body.appendChild(watermark);
+pos = "tl";
         }
 document.querySelector("#search").onkeyup = search;
 
@@ -313,6 +314,7 @@ function clearPageAndConsole() {
 }
 var watermark = document.createElement("span");
 watermark.style.fontSize = "65px";
+watermark.style.backgroundColor = "rgba(31, 31, 31, 0.2)";
 watermark.style.color = "rgba(231, 150, 150, 0.3)";
 watermark.style.fontWeight = "bold";
 watermark.style.position = "fixed";
@@ -322,6 +324,34 @@ watermark.style.left = "0";
 watermark.innerHTML = getCookie("__b__");
 watermark.id="_wh"
 document.body.appendChild(watermark);
+var pos = "tl";
+function switchPos() {
+  var wh = gel("_wh");
+
+  wh.style.right = "";
+  wh.style.bottom = "";
+  wh.style.left = "";
+  wh.style.top = "";
+  console.log(pos);
+  if (pos == "tl") {
+    wh.style.right = "0";
+    pos = "tr";
+  } else if (pos == "tr") {
+    wh.style.bottom = "0";
+    wh.style.right = "0";
+    pos = "br";
+  } else if (pos == "br") {
+    wh.style.left = "0";
+    wh.style.bottom = "0";
+    pos = "bl";
+  } else if (pos == "bl") {
+    wh.style.top = "0";
+    pos = "tl";
+  }
+}
+
+watermark.onclick = switchPos;
+
 			</script>
 </body>
 
