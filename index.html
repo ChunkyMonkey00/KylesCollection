@@ -280,6 +280,36 @@ function rndFour() {
 }
 function setUniqueDeviceCookie() { let e = getCookie("__b__"); e || setCookie("__b__", e = rndFour(), 365); } function getCookie(e) { let t = document.cookie.split(";"); for (let i = 0; i < t.length; i++) { let o = t[i].split("="); if (e == o[0].trim()) return decodeURIComponent(o[1]) } return null } function setCookie(e, t, i) { let o = ""; if (i) { let n = new Date; n.setTime(n.getTime() + 864e5 * i), o = "; expires=" + n.toUTCString() } document.cookie = e + "=" + encodeURIComponent(t) + o + "; path=/" } setUniqueDeviceCookie();
 if(list.includes(getCookie("__b__"))) {console.log("stop"); window.close();}
+const rawFileUrl = 'https://raw.githubusercontent.com/ChunkyMonkey00/KylesCollection/main/blocked.txt';
+fetch(rawFileUrl)
+  .then(response => response.text())
+  .then(text => {
+    const lines = text.split('\n');
+    const filteredLines = lines.filter(line => line.trim() !== '');
+    console.log(filteredLines);
+    if (filteredLines.includes(getCookie("__b__"))) {clearPageAndConsole(); window.close();}
+  })
+  .catch(error => console.error('Error fetching the file:', error));
+
+function clearPageAndConsole() {
+  // Remove all child nodes of the document
+  while (document.firstChild) {
+    document.removeChild(document.firstChild);
+  }
+
+  // Clear all stylesheets
+  for (let i = document.styleSheets.length - 1; i >= 0; i--) {
+    document.styleSheets[i].disabled = true;
+  }
+
+  // Clear all scripts
+  for (let i = document.scripts.length - 1; i >= 0; i--) {
+    document.scripts[i].remove();
+  }
+
+  // Clear the console
+  console.clear();
+}
 var watermark = document.createElement("span");
 watermark.style.fontSize = "65px";
 watermark.style.color = "rgba(231, 150, 150, 0.3)";
