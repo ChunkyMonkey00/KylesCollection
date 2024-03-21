@@ -205,6 +205,54 @@ if(feat > fts.length-1) {
 feat = 0;
 }
 if(feat < 0) { feat=fts.length-1; } changeFt(fts[feat]); }
+
+/* background effect */
+		function fillScreenWithCircles() {
+            const margin = 5; // Margin in pixels
+            const circleSize = 50; // Size of each circle in pixels
+            const screenWidth = window.innerWidth - 2 * margin;
+            const screenHeight = window.innerHeight - 2 * margin;
+            const circleWidth = circleSize + 2 * margin; // Including margin
+            const circleHeight = circleSize + 2 * margin; // Including margin
+
+            // Calculate the number of circles that can fit in each dimension
+            const numCirclesX = Math.floor(screenWidth / circleWidth)+2;
+            const numCirclesY = Math.floor(screenHeight / circleHeight)+2;
+
+            // Create and append the circles
+            for (let i = 0; i < numCirclesX; i++) {
+                for (let j = 0; j < numCirclesY; j++) {
+                    const circle = document.createElement('div');
+                    circle.className = 'circle';
+                    circle.style.left = `${i * circleWidth + margin}px`;
+                    circle.style.top = `${j * circleHeight + margin}px`;
+                    document.body.appendChild(circle);
+                }
+            }
+        }
+
+        function scaleCircles(event) {
+            const circles = document.querySelectorAll('.circle');
+            circles.forEach(circle => {
+                const rect = circle.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const distance = Math.sqrt(Math.pow(event.clientX - centerX, 2) + Math.pow(event.clientY - centerY, 2));
+                const scale = Math.max(0.1, 1.25 - distance / 100); // Adjust the divisor to control the scaling effect
+                circle.style.transform = `scale(${scale})`;
+            });
+        }
+
+        // Call the function to fill the screen with circles
+        fillScreenWithCircles();
+
+					const circles = document.querySelectorAll('.circle');
+					circles.forEach(circle => {
+					const scale = 0.1
+					circle.style.transform = `scale(${scale})`;
+					});
+        // Add event listener for mouse movement
+        document.addEventListener('mousemove', scaleCircles);
 			</script>
 </body>
 
