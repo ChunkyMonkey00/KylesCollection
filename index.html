@@ -217,7 +217,7 @@ if(feat < 0) { feat=fts.length-1; } changeFt(fts[feat]); }
 
             // Calculate the number of circles that can fit in each dimension
             const numCirclesX = Math.floor(screenWidth / circleWidth)+2;
-            const numCirclesY = Math.floor(screenHeight / circleHeight)+20;
+            const numCirclesY = Math.floor(screenHeight / circleHeight)+2;
 
             // Create and append the circles
             for (let i = 0; i < numCirclesX; i++) {
@@ -227,6 +227,7 @@ if(feat < 0) { feat=fts.length-1; } changeFt(fts[feat]); }
                     circle.style.left = `${i * circleWidth + margin}px`;
                     circle.style.top = `${j * circleHeight + margin}px`;
                     document.body.appendChild(circle);
+		    circle.style.position = "fixed";
                 }
             }
         }
