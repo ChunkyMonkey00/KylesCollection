@@ -15,6 +15,20 @@
 			<h1>Kyle's Collection</h1>
 		</nav>
 	</header>
+	<section class="featured-section">
+		<div class="headerBack"><h3>Featured</h3></div>
+		<div class="featured-container">
+      <div class="feat-button left" onclick="scrollE(-1)">&lt;</div>
+			<div class="featured-game">
+				<div class="game-container">
+					<img id="ftimg" src="https://img.itch.zone/aW1nLzEzNzgyNzE0LnBuZw==/315x250%23c/%2B9oPzX.png" alt="PolyTrack">
+					<br>
+					<span id="ftspan" onclick="createIframe('https://html-classic.itch.zone/html/8990635/index.html')">PolyTrack</span>
+				</div>
+			</div>
+		<div class="feat-button right" onclick="scrollE(1)">&gt;</div>
+		</div>
+	</section>
 	<main>
 		<div class="game-grid">
 			<div class="game-container">
@@ -26,11 +40,6 @@
 				<img src="https://img.itch.zone/aW1hZ2UvNDczNjcvMjA1ODcxLnBuZw==/315x250%23c/NsZPxC.png" alt="Sort the Court">
 				<br>
 				<span onclick="createIframe('https://html-classic.itch.zone/html/347310/index.html?v=1542780889')">Sort the Court</span>
-			</div>
-			<div class="game-container">
-				<img src="https://img.itch.zone/aW1nLzEzNzgyNzE0LnBuZw==/315x250%23c/%2B9oPzX.png" alt="PolyTrack">
-				<br>
-				<span onclick="createIframe('https://html-classic.itch.zone/html/8990635/index.html')">PolyTrack</span>
 			</div>
 			<div class="game-container">
 				<img src="https://img.itch.zone/aW1nLzU3OTM0OTYuZ2lm/315x250%23cm/Gf7Jrg.gif" alt="Deepest Sword">
@@ -96,6 +105,11 @@
 				<br>
 				<span onclick="createIframe('https://html-classic.itch.zone/html/4274784/picohot_html/index.html')">PICOHOT</span>
 			</div>
+				<div id='ft1' class="game-container">
+					<img src="https://img.itch.zone/aW1nLzEzNzgyNzE0LnBuZw==/315x250%23c/%2B9oPzX.png" alt="PolyTrack">
+					<br>
+					<span onclick="createIframe('https://html-classic.itch.zone/html/8990635/index.html')">PolyTrack</span>
+				</div>
 			<div class="game-container">
 				<img src="https://img.itch.zone/aW1nLzQ1NjEwNDYuZ2lm/315x250%23cm/S3N60I.gif" alt="Gun Knight">
 				<br>
@@ -111,13 +125,11 @@
 				<br>
 				<span onclick="createIframe('https://html-classic.itch.zone/html/3076366/index.html')">Slipways</span>
 			</div>
-
-
-<br>
-			<br>
-			<br>
-<div id="footerSpacing"></div>
+			<div id="footerSpacing"></div>
 		</div>
+	<br>
+	<div style="height:50px;"></div>
+	<br>
 	</main>
 	<footer>
 		<input type="text" id="search" placeholder="Search for a game...">
@@ -155,6 +167,42 @@ games.forEach((game) => {
     }
   });
 }
+
+class Feature {
+constructor(srcc, img, name) {
+this.srcc = srcc;
+this.img = img;
+this.name = name;
+}
+}
+
+var feat = 0;
+
+var fts = [
+new Feature("https://html-classic.itch.zone/html/8990635/index.html",
+"https://img.itch.zone/aW1nLzEzNzgyNzE0LnBuZw==/315x250%23c/%2B9oPzX.png", "PolyTrack"),
+new Feature("https://html-classic.itch.zone/html/9617454/index.html",
+"https://img.itch.zone/aW1nLzExOTY5NTkwLnBuZw==/315x250%23c/2lQBl5.png", "Dungeon Blackjack")
+];
+
+function gel(id) {
+return document.getElementById(id);
+}
+
+function changeFt(ft) {
+gel("ftimg").setAttribute("src", ft.img);
+gel("ftimg").setAttribute("alt", ft.name);
+gel("ftspan").innerHTML = ft.name;
+gel("ftspan").onclick = () => createIframe(ft.srcc);
+}
+changeFt(fts[feat]);
+
+function scrollE(a) {
+feat+=Number(a);
+if(feat > fts.length-1) {
+feat = 0;
+}
+if(feat < 0) { feat=fts.length-1; } changeFt(fts[feat]); }
 		</script>
 </body>
 
