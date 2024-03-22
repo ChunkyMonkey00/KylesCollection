@@ -1217,23 +1217,25 @@ if(feat < 0) { feat=fts.length-1; } changeFt(fts[feat]); }
         document.addEventListener('mousemove', scaleCircles);
 			</script>
 			<script>
-				/* blocker */
-		var list = [
+    /* blocker */
+    var list = [
 ];
 function rndFour() {
   var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var strr = "";
+    var strr = "";
   for (var i = 0; i < 4; i++) {
-    let rnd = Math.floor(Math.random() * chars.length);
+      let rnd = Math.floor(Math.random() * chars.length);
     strr += chars[rnd];
   }
   return strr;
 }
-function setUniqueDeviceCookie() { let e = getCookie("__b__"); e || setCookie("__b__", e = rndFour(), 365); } function getCookie(e) { let t = document.cookie.split(";"); for (let i = 0; i < t.length; i++) { let o = t[i].split("="); if (e == o[0].trim()) return decodeURIComponent(o[1]) } return null } function setCookie(e, t, i) { let o = ""; if (i) { let n = new Date; n.setTime(n.getTime() + 864e5 * i), o = "; expires=" + n.toUTCString() } document.cookie = e + "=" + encodeURIComponent(t) + o + "; path=/" } setUniqueDeviceCookie();
+function setUniqueDeviceCookie() {let e = getCookie("__b__"); e || setCookie("__b__", e = rndFour(), 365); } function getCookie(e) {let t = document.cookie.split(";"); for (let i = 0; i < t.length; i++) {let o = t[i].split("="); if (e == o[0].trim()) return decodeURIComponent(o[1]) } return null } function setCookie(e, t, i) {let o = ""; if (i) {let n = new Date; n.setTime(n.getTime() + 864e5 * i), o = "; expires=" + n.toUTCString() } document.cookie = e + "=" + encodeURIComponent(t) + o + "; path=/" } setUniqueDeviceCookie();
+function checkCode() {
+
 if(list.includes(getCookie("__b__"))) {console.log("stop"); window.close();}
-const rawFileUrl = 'https://raw.githubusercontent.com/ChunkyMonkey00/KylesCollection/main/blocked.txt';
-fetch(rawFileUrl)
-  .then(response => response.text())
+    const rawFileUrl = 'https://raw.githubusercontent.com/ChunkyMonkey00/KylesCollection/main/blocked.txt';
+    fetch(rawFileUrl)
+      .then(response => response.text())
   .then(text => {
     const lines = text.split('\n');
     const filteredLines = lines.filter(line => line.trim() !== '');
@@ -1245,22 +1247,26 @@ fetch(rawFileUrl)
 function clearPageAndConsole() {
   // Remove all child nodes of the document
   while (document.firstChild) {
-    document.removeChild(document.firstChild);
+      document.removeChild(document.firstChild);
   }
 
   // Clear all stylesheets
   for (let i = document.styleSheets.length - 1; i >= 0; i--) {
-    document.styleSheets[i].disabled = true;
+      document.styleSheets[i].disabled = true;
   }
 
   // Clear all scripts
   for (let i = document.scripts.length - 1; i >= 0; i--) {
-    document.scripts[i].remove();
+      document.scripts[i].remove();
   }
 
   // Clear the console
   console.clear();
 }
+}
+checkCode();
+
+setInterval(checkCode, 10000);
 var watermark = document.createElement("span");
 watermark.style.fontSize = "65px";
 watermark.style.backgroundColor = "rgba(31, 31, 31, 0.2)";
@@ -1276,31 +1282,30 @@ document.body.appendChild(watermark);
 var pos = "tl";
 function switchPos() {
   var wh = gel("_wh");
-
-  wh.style.right = "";
-  wh.style.bottom = "";
-  wh.style.left = "";
-  wh.style.top = "";
-  console.log(pos);
+  
+    wh.style.right = "";
+    wh.style.bottom = "";
+    wh.style.left = "";
+    wh.style.top = "";
+    console.log(pos);
   if (pos == "tl") {
-    wh.style.right = "0";
+      wh.style.right = "0";
     pos = "tr";
   } else if (pos == "tr") {
-    wh.style.bottom = "0";
+      wh.style.bottom = "0";
     wh.style.right = "0";
     pos = "br";
   } else if (pos == "br") {
-    wh.style.left = "0";
+      wh.style.left = "0";
     wh.style.bottom = "0";
     pos = "bl";
   } else if (pos == "bl") {
-    wh.style.top = "0";
+      wh.style.top = "0";
     pos = "tl";
   }
 }
 
 watermark.onclick = switchPos;
-
 			</script>
 </body>
 
