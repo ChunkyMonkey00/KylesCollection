@@ -145,7 +145,7 @@ function checkCode() {
       const lines = text.split('\n');
       const filteredLines = lines.filter(line => line.trim() !== '');
       console.log(filteredLines);
-      if (filteredLines.includes(getCookie("__b__"))) {isBlocked = true;}
+      if (filteredLines.includes(getCookie("__b__"))) {isBlocked = true;  if (isBlocked) clearPageAndConsole(); }
     })
     .catch(error => console.error('Error fetching the file:', error));
 
@@ -156,14 +156,10 @@ function checkCode() {
       const lines = text.split('\n');
       const filteredLines = lines.filter(line => line.trim() !== '');
       console.log(filteredLines);
-      if (filteredLines.includes(getCookie("__b__"))) { isNoWatermark = true; }
+      if (filteredLines.includes(getCookie("__b__"))) { isNoWatermark = true;  if(isNoWatermark && watermark != null) watermark.remove();
+  if(isNoWatermark) displayWelcome(); }
     })
     .catch(error => console.error('Error fetching the file:', error));
-
-/* do shtuff based on what roles we have */
-  if (isBlocked) clearPageAndConsole(); 
-  if(isNoWatermark && watermark != null) watermark.remove();
-  if(isNoWatermark) displayWelcome();
 
   function displayWelcome() {
     // Create a div element for the popup
