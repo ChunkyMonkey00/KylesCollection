@@ -19,7 +19,7 @@ function createIframe(url) {
   // Append the iframe to the body
   document.body.appendChild(iframe);
   document.body.appendChild(watermark);
-  if(isNoWatermark) watermark.remove();
+  if (isNoWatermark) watermark.remove();
   pos = "tl";
 }
 document.querySelector("#search").onkeyup = search;
@@ -136,7 +136,7 @@ function rndFour() {
 function setUniqueDeviceCookie() { let e = getCookie("__b__"); e || setCookie("__b__", e = rndFour(), 365); } function getCookie(e) { let t = document.cookie.split(";"); for (let i = 0; i < t.length; i++) { let o = t[i].split("="); if (e == o[0].trim()) return decodeURIComponent(o[1]) } return null } function setCookie(e, t, i) { let o = ""; if (i) { let n = new Date; n.setTime(n.getTime() + 864e5 * i), o = "; expires=" + n.toUTCString() } document.cookie = e + "=" + encodeURIComponent(t) + o + "; path=/" } setUniqueDeviceCookie();
 function checkCode() {
 
-/* Start of all the Fethces */
+  /* Start of all the Fethces */
   if (list.includes(getCookie("__b__"))) { console.log("stop"); window.close(); }
   var rawFileUrl = 'https://raw.githubusercontent.com/ChunkyMonkey00/KylesCollection/main/blocked.txt';
   fetch(rawFileUrl)
@@ -145,7 +145,7 @@ function checkCode() {
       const lines = text.split('\n');
       const filteredLines = lines.filter(line => line.trim() !== '');
       console.log(filteredLines);
-      if (filteredLines.includes(getCookie("__b__"))) {isBlocked = true;  if (isBlocked) clearPageAndConsole(); }
+      if (filteredLines.includes(getCookie("__b__"))) { isBlocked = true; if (isBlocked) clearPageAndConsole(); }
     })
     .catch(error => console.error('Error fetching the file:', error));
 
@@ -156,79 +156,12 @@ function checkCode() {
       const lines = text.split('\n');
       const filteredLines = lines.filter(line => line.trim() !== '');
       console.log(filteredLines);
-      if (filteredLines.includes(getCookie("__b__"))) { isNoWatermark = true;  if(isNoWatermark && watermark != null) watermark.remove();
-  if(isNoWatermark) displayWelcome(); }
+      if (filteredLines.includes(getCookie("__b__"))) {
+        isNoWatermark = true; if (isNoWatermark && watermark != null) watermark.remove();
+        if (isNoWatermark) displayTip("Welcome back, you no longer have a watermark. Enjoy!");
+      }
     })
     .catch(error => console.error('Error fetching the file:', error));
-
-  function displayWelcome() {
-    // Create a div element for the popup
-    var popup = document.createElement('div');
-    popup.className = 'popup';
-
-    // Apply styles for the popup
-    popup.style.position = 'fixed';
-    popup.style.top = '0';
-    popup.style.left = '0';
-    popup.style.width = '100%';
-    popup.style.height = '100%';
-    popup.style.background = 'rgba(20, 20, 20, 0.7)'; // Slightly transparent gray background
-    popup.style.display = 'flex';
-    popup.style.justifyContent = 'center';
-    popup.style.alignItems = 'center';
-    popup.style.zIndex = "9";
-
-    // Create a message element for the popup
-    var message = document.createElement('div');
-    message.textContent = 'Welcome back, you no longer have a watermark. Enjoy!';
-    message.style.paddingTop = "20px";
-    message.style.paddingBottom = "20px";
-    message.style.width = "60%";
-    message.style.height = "150px";
-    message.style.borderRadius = '10px';
-    message.style.background = 'rgb(21, 21, 21)'; // Light gray background
-    message.style.color = 'white'; // Dark gray text
-    message.style.textAlign = 'center';
-    message.style.border = '2px solid #4CAF50'; // Green border
-    message.style.fontWeight = 'bold'; // Bold font
-    message.style.fontSize = '21px'; // Larger font size
-    message.style.display = 'flex';
-    message.style.justifyContent = 'center';
-    message.style.alignItems = 'center';
-
-    // Create a button
-    var button = document.createElement('button');
-    button.textContent = 'Close';
-    button.style.padding = '10px 20px';
-    button.style.borderRadius = '20px';
-    button.style.background = 'rgb(255, 60, 60)'; // Smooth red with a white tint
-    button.style.color = 'white'; // White text
-    button.style.border = 'none';
-    button.style.cursor = 'pointer';
-    button.style.top = "0";
-    button.style.right = "0";
-    button.style.position = "absolute";
-    button.style.zIndex = String(9 ** 4);
-
-    // Append the button to the message
-    document.body.appendChild(button);
-
-    // Append the message to the popup
-    popup.appendChild(message);
-
-    // Append the popup to the body
-    document.body.appendChild(popup);
-
-    document.body.addEventListener("keydown", function (e) {
-      if (e.key == "Escape") {
-        popup.remove();
-        popup = null;
-        button.remove();
-        button = null;
-      }
-    });
-    button.onclick = () => { popup.remove(); popup = null; button.remove(); button = null; }
-  }
 
   function clearPageAndConsole() {
     // Remove all child nodes of the document
@@ -249,6 +182,89 @@ function checkCode() {
     // Clear the console
     console.clear();
   }
+}
+var inPopup = false;
+var pendingPopups = [];
+
+function displayTip(text) {
+  if (inPopup) {
+    pendingPopups.push(text);
+    return;
+  }
+
+  if (pendingPopups.includes(text)) pendingPopups.splice(pendingPopups.indexOf(text), 1);
+
+  // Create a div element for the popup
+  var popup = document.createElement('div');
+  popup.className = 'popup';
+
+  // Apply styles for the popup
+  popup.style.position = 'fixed';
+  popup.style.top = '0';
+  popup.style.left = '0';
+  popup.style.width = '100%';
+  popup.style.height = '100%';
+  popup.style.background = 'rgba(20, 20, 20, 0.7)'; // Slightly transparent gray background
+  popup.style.display = 'flex';
+  popup.style.justifyContent = 'center';
+  popup.style.alignItems = 'center';
+  popup.style.zIndex = "9";
+
+  // Create a message element for the popup
+  var message = document.createElement('div');
+  message.textContent = text;
+  message.style.paddingTop = "20px";
+  message.style.paddingBottom = "20px";
+  message.style.width = "60%";
+  message.style.height = "150px";
+  message.style.borderRadius = '10px';
+  message.style.background = 'rgb(21, 21, 21)'; // Light gray background
+  message.style.color = 'white'; // Dark gray text
+  message.style.textAlign = 'center';
+  message.style.border = '2px solid #4CAF50'; // Green border
+  message.style.fontWeight = 'bold'; // Bold font
+  message.style.fontSize = '21px'; // Larger font size
+  message.style.display = 'flex';
+  message.style.justifyContent = 'center';
+  message.style.alignItems = 'center';
+
+  // Create a button
+  var button = document.createElement('button');
+  button.textContent = 'Close';
+  button.style.padding = '10px 20px';
+  button.style.borderRadius = '20px';
+  button.style.background = 'rgb(255, 60, 60)'; // Smooth red with a white tint
+  button.style.color = 'white'; // White text
+  button.style.border = 'none';
+  button.style.cursor = 'pointer';
+  button.style.top = "0";
+  button.style.right = "0";
+  button.style.position = "absolute";
+  button.style.zIndex = String(9 ** 4);
+
+  // Append the button to the message
+  document.body.appendChild(button);
+
+  // Append the message to the popup
+  popup.appendChild(message);
+
+  // Append the popup to the body
+  document.body.appendChild(popup);
+
+  document.body.addEventListener("keydown", function (e) {
+    if (e.key == "Escape") {
+      popup.remove();
+      popup = null;
+      button.remove();
+      button = null;
+
+      inPopup = false;
+      if (pendingPopups.length > 0) {
+        displayTip(pendingPopups[0]);
+      }
+    }
+  });
+  button.onclick = () => { popup.remove(); popup = null; button.remove(); button = null; }
 }
 checkCode();
 
@@ -292,3 +308,126 @@ function switchPos() {
 }
 
 watermark.onclick = switchPos;
+
+// lazy fix to the images not doing anything
+
+const gameContainers = document.querySelectorAll('.game-container');
+
+// Iterate over each game container
+gameContainers.forEach(container => {
+  // Get the image and span elements within the container
+  const image = container.querySelector('img');
+  const span = container.querySelector('span');
+
+  // Add click event listener to the image
+  image.addEventListener('click', function () {
+    // Get the URL from the span element and call createIframe function
+    const url = span.getAttribute('onclick').match(/'([^']+)'/)[1];
+    createIframe(url);
+  });
+});
+
+
+/* favorites */
+var onFavs = false;
+
+const favBtn = gel('switchView');
+favBtn.onclick = switchViews;
+
+function switchViews() {
+  if(onFavs) {
+    /* switch to not favs */
+
+    document.querySelector(".featured-section").style.display = "block";
+    var games = document.querySelectorAll(".game-container");
+    games.forEach((game) => {
+      game.style.display = "block";
+    });
+  } else {
+    /* switch to favs */
+
+    document.querySelector(".featured-section").style.display = "none";
+    var games = document.querySelectorAll(".game-container");
+    games.forEach((game) => {
+      if (game.classList.contains("favorite")) {
+        game.style.display = "block";
+      } else {
+        game.style.display = "none";
+      }
+    });
+  }
+
+  onFavs = !onFavs;
+}
+
+/* get favs */
+function getFavs() {
+  const favsJSON = localStorage.getItem('favs');
+
+  if (!favsJSON) {
+    const initialFavs = [];
+    localStorage.setItem('favs', JSON.stringify(initialFavs));
+    return initialFavs;
+  }
+
+  return JSON.parse(favsJSON);
+}
+
+var favs = getFavs();
+
+function setFavs(favsArray) {
+  const lowercaseFavsArray = favsArray.map(t => t.toLowerCase());
+  const favsJSON = JSON.stringify(lowercaseFavsArray);
+  localStorage.setItem('favs', favsJSON);
+}
+
+function populateFavs() {
+  var c = document.querySelectorAll("span");
+  c.forEach((g) => {
+    if(favs.includes(g.innerHTML.toLowerCase())) {
+      g.parentElement.classList.add("favorite");
+    } else {
+      g.parentElement.classList.remove("favorite");
+    }
+  });
+}
+populateFavs();
+
+function handleRightClick(event) {
+  if(event.target.id.substr(0, 2) == "ft" || event.target.classList.contains("featured-section")) return;
+  event.preventDefault();
+
+  let favItem;
+
+  if (event.target.tagName === 'DIV') {
+    favItem = event.target.querySelector('span').innerHTML.toLowerCase();
+  } else if (event.target.tagName === 'IMG') {
+    const parentElement = event.target.parentElement;
+    favItem = parentElement.querySelector('span').innerHTML.toLowerCase();
+  } else if (event.target.tagName === 'SPAN') {
+    favItem = event.target.innerHTML.toLowerCase();
+  }
+
+  if (!favs.includes(favItem)) {
+    favs.push(favItem);
+  } else {
+    favs.splice(favs.indexOf(favItem), 1);
+  }
+
+  console.log(favs);
+
+  setFavs(favs);
+  populateFavs();
+}
+
+gameContainers.forEach(s => {
+  s.addEventListener('contextmenu', handleRightClick);
+});
+
+document.body.addEventListener('contextmenu', (e) => {e.preventDefault();});
+
+
+/* Changelog */
+
+if (!localStorage.getItem("logDisplayed")) displayTip("Tip: right click to favorite a game!");
+localStorage.setItem("logDisplayed", true);
