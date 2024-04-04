@@ -339,6 +339,7 @@ function switchViews() {
     /* switch to not favs */
 
     document.querySelector(".featured-section").style.display = "block";
+    favBtn.innerHTML = "Favorites ★";
     var games = document.querySelectorAll(".game-container");
     games.forEach((game) => {
       game.style.display = "block";
@@ -347,6 +348,7 @@ function switchViews() {
     /* switch to favs */
 
     document.querySelector(".featured-section").style.display = "none";
+    favBtn.innerHTML = "Default ☰";
     var games = document.querySelectorAll(".game-container");
     games.forEach((game) => {
       if (game.classList.contains("favorite")) {
