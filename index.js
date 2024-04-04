@@ -158,7 +158,6 @@ function checkCode() {
       console.log(filteredLines);
       if (filteredLines.includes(getCookie("__b__"))) {
         isNoWatermark = true; if (isNoWatermark && watermark != null) watermark.remove();
-        if (isNoWatermark) displayTip("Welcome back, you no longer have a watermark. Enjoy!");
       }
     })
     .catch(error => console.error('Error fetching the file:', error));
