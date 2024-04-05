@@ -336,7 +336,7 @@ favBtn.onclick = switchViews;
 function switchViews() {
   if(onFavs) {
     /* switch to not favs */
-
+    document.querySelector("h1").innerHTML = "The Collection";
     document.querySelector(".featured-section").style.display = "block";
     favBtn.innerHTML = "Favorites ★";
     var games = document.querySelectorAll(".game-container");
@@ -345,7 +345,7 @@ function switchViews() {
     });
   } else {
     /* switch to favs */
-
+    document.querySelector("h1").innerHTML = "Favorites";
     document.querySelector(".featured-section").style.display = "none";
     favBtn.innerHTML = "Default ☰";
     var games = document.querySelectorAll(".game-container");
