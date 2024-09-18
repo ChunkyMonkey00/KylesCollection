@@ -429,9 +429,5 @@ document.body.addEventListener('contextmenu', (e) => {e.preventDefault();});
 
 
 /* Changelog */
-
-if (!localStorage.getItem("logDisplayed")) displayTip("Tip: right click to favorite a game!");
-localStorage.setItem("logDisplayed", true);
-
-if (!localStorage.getItem("log1Displayed")) displayTip("PolyTrack has been fixed!");
-localStorage.setItem("log1Displayed", true);
+localStorage.setItem("logDisplayed", null);
+localStorage.setItem("log1Displayed", null);
