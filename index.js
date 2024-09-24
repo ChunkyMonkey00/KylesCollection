@@ -47,8 +47,8 @@ class Feature {
 var feat = 0;
 
 var fts = [
-  new Feature("https://html-classic.itch.zone/html/8990635/index.html",
-    "https://img.itch.zone/aW1nLzEzNzgyNzE0LnBuZw==/315x250%23c/%2B9oPzX.png", "PolyTrack"),
+  new Feature("https://chunkymonkey00.github.io/jsonChatify/",
+    "https://raw.githubusercontent.com/ChunkyMonkey00/jsonChatify/refs/heads/main/thumbnail.png", "Chat Room"),
   new Feature("https://html-classic.itch.zone/html/7644089/Poker [WebGL]/index.html", "https://img.itch.zone/aW1nLzExNzE5MjQ5LnBuZw==/315x250%23c/K3v59v.png", "Poker"),
   new Feature("https://html-classic.itch.zone/html/2357437/index.html", "https://img.itch.zone/aW1nLzM2Mjc4ODAuanBlZw==/315x250%23c/nGpecF.jpeg", "BlackJack")
 ];
