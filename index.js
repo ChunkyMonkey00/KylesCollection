@@ -47,10 +47,8 @@ class Feature {
 var feat = 0;
 
 var fts = [
-  new Feature("https://mikhad.github.io/wordle/#infinite",
-    "https://raw.githubusercontent.com/ChunkyMonkey00/KylesCollection/refs/heads/main/Screenshot%202024-10-04%20085329.png", "Wordle Infninite"),
-  new Feature("https://html-classic.itch.zone/html/7644089/Poker [WebGL]/index.html", "https://img.itch.zone/aW1nLzExNzE5MjQ5LnBuZw==/315x250%23c/K3v59v.png", "Poker"),
-  new Feature("https://html-classic.itch.zone/html/2357437/index.html", "https://img.itch.zone/aW1nLzM2Mjc4ODAuanBlZw==/315x250%23c/nGpecF.jpeg", "BlackJack")
+  new Feature("https://www.visitoregon.com/wp-content/plugins/OregonTrail/oregon.html",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR3poIcdijRHW9wQSLOatGzhwswoSNO6xwUQ", "The Oregon Trail")
 ];
 
 function gel(id) {
