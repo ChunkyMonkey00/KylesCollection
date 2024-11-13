@@ -1,4 +1,4 @@
-var isNoWatermark = false;
+var isNoWatermark = true;
 var isBlocked = false;
 
 function createIframe(url) {
