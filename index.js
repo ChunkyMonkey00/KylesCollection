@@ -21,6 +21,7 @@ function createIframe(url) {
   document.body.appendChild(watermark);
   if (isNoWatermark) watermark.remove();
   pos = "tl";
+  document.body.style.backgroundColor = "rgb(21, 21, 21)";
 }
 document.querySelector("#search").onkeyup = search;
 
