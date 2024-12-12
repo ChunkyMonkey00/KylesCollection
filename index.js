@@ -8,6 +8,7 @@ function createIframe(url) {
   // Create an iframe element
   var iframe = document.createElement('iframe');
   iframe.src = url;
+  iframe.sandbox = "allow-scripts";
   iframe.style.position = "absolute";
   iframe.style.width = '100%';
   iframe.style.height = '100%';
