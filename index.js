@@ -8,6 +8,7 @@ function createIframe(url) {
   // Create an iframe element
   var iframe = document.createElement('iframe');
   iframe.src = url;
+  iframe.sandbox = "allow-scripts";
   iframe.style.position = "absolute";
   iframe.style.width = '100%';
   iframe.style.height = '100%';
@@ -15,6 +16,10 @@ function createIframe(url) {
   iframe.style.top = "0";
   iframe.style.left = "0";
   iframe.style.overflow = "hidden";
+
+  iframe.onload = () => {
+    iframe.contentWindow.window.top = iframe.contentWindow; // Override `window.top`
+  };
 
   // Append the iframe to the body
   document.body.appendChild(iframe);
