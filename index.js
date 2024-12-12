@@ -1,7 +1,8 @@
 var isNoWatermark = true;
 var isBlocked = false;
 
-function createIframe(url) {
+/* Isn't working right now. i might cry */
+function _createIframe(url) {
   // Clear existing content
   document.body.innerHTML = '';
 
@@ -27,6 +28,9 @@ function createIframe(url) {
   if (isNoWatermark) watermark.remove();
   pos = "tl";
   document.body.style.backgroundColor = "rgb(21, 21, 21)";
+}
+function createIframe(url) {
+  window.open(url, '_blank', 'noopener,noreferrer');
 }
 document.querySelector("#search").onkeyup = search;
 
